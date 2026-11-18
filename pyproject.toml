@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "blockchainiq-x402-agentkit"
+version = "0.1.0"
+description = "Coinbase AgentKit action provider for Blockchain IQ's pay-per-call crypto data API (x402 v2, USDC on Base)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "coinbase-agentkit>=0.7",
+    # coinbase-agentkit 0.7.x imports the synchronous solana.rpc.api client,
+    # which solana-py removed in 0.37; pin the compatible line.
+    "solana>=0.36,<0.37",
+    "pydantic>=2",
+    "requests>=2.31",
+    "eth-account>=0.11",
+]
+
+[tool.setuptools]
+py-modules = ["blockchainiq_x402", "blockchainiq_action_provider"]
